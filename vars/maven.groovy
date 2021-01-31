@@ -2,19 +2,19 @@ import pipeline.*
 
 class PasosMaven {
     static def nombres() {      
-      return ['Compile','Unit','Jar','SonarQube analysis','Nexus Upload','Run','Test']
+      return ['Compile','Unit','SonarQube analysis','Run']
     }
 }
 
 class PasosMavenCI {
     static def nombres() {      
-      return ['compile','unit','jar','sonarQube','nexusCIUpload', 'createRelease']
+      return ['compile','unit','sonarQube']
     }
 }
 
 class PasosMavenCD {
     static def nombres() {      
-      return ['nexusDownload','runStage','test','nexusCDUpload']
+      return ['nexusDownload','runStage','test']
     }
 }
 
