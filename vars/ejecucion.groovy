@@ -11,7 +11,7 @@ def call(){
         }
         parameters {
         string defaultValue: '', description: '', name: 'stage', trim: false
-        choice choices: ['gradle', 'maven'], description: '', name: 'herramienta'
+        choice choices: ['maven', 'gradle'], description: '', name: 'herramienta'
         }
         stages {
             stage('Validaciones') {
@@ -143,18 +143,6 @@ def call(){
 
                         def git_url = env.GIT_URL.split('/')
                         env.REPOSITORIO = git_url[-1].split('.git')[0]
-
-                        // validar tecnologia ms, front, bff, etc
-                        if(env.REPOSITORIO.startsWith('ms') || env.REPOSITORIO.startsWith('front') || env.REPOSITORIO.startsWith('bff')){
-                            figlet 'tecnologia'
-                            figlet env.REPOSITORIO 
-                        }
-                        else{
-                            error("no se detecta tecnologia")
-                        }
-                        
-                        figlet params.herramienta
-                        figlet env.ci_cd
 
                     }
                 }
