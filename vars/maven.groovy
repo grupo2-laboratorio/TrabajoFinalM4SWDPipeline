@@ -47,6 +47,7 @@ def call(stgs,ci_cd){
         echo "ci"
         pasos = new PasosMavenCI()
         nombres = pasos.nombres()
+        echo stgs
         stgs.each{
           if(nombres.indexOf(it) != -1 ){
             stages.add(it)
