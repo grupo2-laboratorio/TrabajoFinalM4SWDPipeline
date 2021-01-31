@@ -60,14 +60,6 @@ def call(){
                             error("rama a ejecutar no corresponde a ninguna conocida: develop, feature, release.")
                         }
 
-                        // validar formato release
-                        if (params.release ==~ /release-v\d+-\d+-\d+/){
-                            env.RELEASE = ""
-                        }
-                        else{
-                            error("formato incorrecto de release")
-                        }
-
 
                         // validar stage
                         if (params.stage == "") {
