@@ -176,7 +176,7 @@ def postman(){
   def git = new pipeline.git.GitMethods()
   def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4Postman'
   git.gitClone(repositorio_postman)
-  sh "newman TrabajoFinalM4Postman/Dxc.postman_collection.json"
+  sh "newman run TrabajoFinalM4Postman/Dxc.postman_collection.json"
 }
 
 return this;
