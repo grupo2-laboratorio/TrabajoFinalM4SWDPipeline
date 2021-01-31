@@ -44,6 +44,7 @@ def call(stgs,ci_cd){
       def stages = []
 
       if(ci_cd == 'ci'){
+        echo "ci"
         pasos = new PasosMavenCI()
         nombres = pasos.nombres()
         stgs.each{
