@@ -11,11 +11,7 @@ def call(){
         }
         parameters {
         string defaultValue: '', description: '', name: 'stage', trim: false
-        string defaultValue: '', description: '', name: 'versionNexusCI', trim: false
-        string defaultValue: '', description: '', name: 'versionNexusCD', trim: false
         choice choices: ['gradle', 'maven'], description: '', name: 'herramienta'
-        string defaultValue: '', description: '', name: 'release', trim: false
-        string defaultValue: '', description: '', name: 'tag', trim: false
         }
         stages {
             stage('Validaciones') {
@@ -24,11 +20,11 @@ def call(){
                        
 
                         // version a env
-                        env.VERSION_PACKAGE_CI = params.versionNexusCI
-                        env.VERSION_PACKAGE_CD = params.versionNexusCD
+                        env.VERSION_PACKAGE_CI = ""
+                        env.VERSION_PACKAGE_CD = ""
 
                         // tag name
-                        env.TAG = params.tag
+                        env.TAG = ""
 
                         sh 'env'
                         // validar tipo y archivos minimos
@@ -66,7 +62,7 @@ def call(){
 
                         // validar formato release
                         if (params.release ==~ /release-v\d+-\d+-\d+/){
-                            env.RELEASE = params.release
+                            env.RELEASE = ""
                         }
                         else{
                             error("formato incorrecto de release")
@@ -187,14 +183,6 @@ def call(){
                         }
                     }
                 }
-            }
-        } 
-        post {
-            success {
-                slackSend (color: '#00FF00', message: "Build Success: [Grupo2][${env.JOB_NAME}][Rama: ${env.GIT_BRANCH}][Stage: [${env.STG_NAME}][Resultado: Ok]")
-            }
-            failure {
-            slackSend (color: '#FF0000', message: "Build Failure: [[Grupo2][${env.JOB_NAME}][Rama: ${env.GIT_BRANCH}][Stage: [${env.STG_NAME}][Resultado: No Ok]")
             }
         }
     }
