@@ -2,13 +2,13 @@ import pipeline.*
 
 class PasosMaven {
     static def nombres() {      
-      return ['compile','unit','sonarQube','runStage']
+      return ['compile','junit']
     }
 }
 
 class PasosMavenCI {
     static def nombres() {      
-      return ['compile','unit','sonarQube']
+      return ['compile','junit','postman']
     }
 }
 
@@ -44,7 +44,6 @@ def call(stgs,ci_cd){
       def stages = []
 
       if(ci_cd == 'ci'){
-        echo "ci"
         pasos = new PasosMavenCI()
         nombres = pasos.nombres()
         stgs.each{
@@ -88,7 +87,7 @@ def compile(){
 }
 
 
-def unit(){
+def junit(){
   sh './mvnw clean test -e'
 }
 
@@ -171,6 +170,12 @@ def createRelease(){
         else{
             git.createBranch('release-v1-0-0', env.GIT_BRANCH)
         }
+}
+
+def postman(){
+  def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4Postman'
+  git.gitClone(repositorio_postman)
+  sh "newman TrabajoFinalM4Postman/Dxc.postman_collection.json"
 }
 
 return this;

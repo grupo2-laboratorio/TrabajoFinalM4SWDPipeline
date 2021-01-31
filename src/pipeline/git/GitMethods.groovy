@@ -4,6 +4,10 @@ def call(){
 
 }
 
+def gitClone(String repository){
+    sh "git clone ${repository}"
+}
+
 def checkIfBranchExists(String branch){
     sh "git config --add remote.origin.fetch +refs/heads/main:refs/remotes/origin/main"
     sh "git pull; git ls-remote --heads origin ${branch}"

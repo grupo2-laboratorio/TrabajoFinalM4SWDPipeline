@@ -64,8 +64,6 @@ def call(){
                         // validar stage
                         if (params.stage == "") {
                             echo "ejecución de todos los stages"
-                            echo params.tipo
-                            echo env.ci_cd
                             if (params.herramienta == "maven" && env.ci_cd == "ci"){
                                 echo "ejecucion maven ci"
                                 pasos_maven = maven.llamar_pasos_ci_maven()
