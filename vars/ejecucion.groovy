@@ -67,11 +67,9 @@ def call(){
                             if (params.tipo == "maven" && env.ci_cd == "ci"){
                                 echo "ejecucion maven ci"
                                 pasos_maven = maven.llamar_pasos_ci_maven()
-                                pasos_maven.each{
-                                    echo it
-                                }
                             }
                             else if (params.herramienta == "maven" && env.ci_cd == "cd"){
+                                echo "ejecucion maven cd"
                                 pasos_maven = maven.llamar_pasos_cd_maven()
                             }
                             else if (params.herramienta == "gradle" && env.ci_cd == "cd"){
