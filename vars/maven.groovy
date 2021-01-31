@@ -2,7 +2,7 @@ import pipeline.*
 
 class PasosMaven {
     static def nombres() {      
-      return ['Compile','Unit','SonarQube analysis','Run']
+      return ['compile','unit','sonarQube','runStage']
     }
 }
 
