@@ -174,7 +174,7 @@ def createRelease(){
 
 def postman(){
   def git = new pipeline.git.GitMethods()
-  def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4Postman'
+  def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4Postman.git .'
   git.gitClone(repositorio_postman)
   sh "newman run TrabajoFinalM4Postman/Dxc.postman_collection.json"
 }
