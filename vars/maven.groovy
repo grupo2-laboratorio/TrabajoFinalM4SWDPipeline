@@ -175,7 +175,7 @@ def createRelease(){
 def postman(){
   def git = new pipeline.git.GitMethods()
   def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4Postman.git .'
-  sh "mkdir postman"
+  sh "mkdir -p postman"
   sh "cd postman"
   sh "rm -rf TrabajoFinalM4Postman"
   git.gitClone(repositorio_postman)
