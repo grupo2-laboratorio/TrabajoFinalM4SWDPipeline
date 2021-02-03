@@ -173,6 +173,7 @@ def createRelease(){
 }
 
 def postman(){
+  try{
   def git = new pipeline.git.GitMethods()
   def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4Postman'
   //sh "mkdir -p postman"
@@ -180,6 +181,9 @@ def postman(){
   sh "rm -rf TrabajoFinalM4Postman"
   git.gitClone(repositorio_postman)
   sh "newman run TrabajoFinalM4Postman/Dxc.postman_collection.json"
+  } catch (Exception e) {
+    echo 'Exception occurred: ' + e.toString()
+  }
 }
 
 def selenium(){
