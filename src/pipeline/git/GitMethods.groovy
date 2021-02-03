@@ -7,6 +7,7 @@ def call(){
 def gitClone(String repository){
     sh "git init"
     sh "git clone ${repository}"
+    return True
 }
 
 def checkIfBranchExists(String branch){
