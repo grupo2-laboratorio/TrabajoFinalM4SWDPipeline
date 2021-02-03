@@ -8,13 +8,13 @@ class PasosMaven {
 
 class PasosMavenCI {
     static def nombres() {      
-      return ['compile','junit','postman']
+      return ['compile','junit','postman','selenium']
     }
 }
 
 class PasosMavenCD {
     static def nombres() {      
-      return ['nexusDownload','runStage','test']
+      return ['nexusDownload','runStage','test','selenium']
     }
 }
 
@@ -181,5 +181,16 @@ def postman(){
   git.gitClone(repositorio_postman)
   sh "newman run TrabajoFinalM4Postman/Dxc.postman_collection.json"
 }
+
+def selenium(){
+  def git = new pipeline.git.GitMethods()
+  def repositorio_postman = 'https://github.com/grupo2-laboratorio/TrabajoFinalM4SeleniumWeb'
+  //sh "mkdir -p postman"
+  //sh "cd postman"
+  //sh "rm -rf TrabajoFinalM4Postman"
+  git.gitClone(repositorio_postman)
+  sh './mvnw clean test -e'
+}
+
 
 return this;
